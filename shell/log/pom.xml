@@ -28,7 +28,9 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
+    <groupId>org.codice</groupId>
     <artifactId>org.apache.karaf.shell.log</artifactId>
+    <version>2.3.3.1</version>
     <packaging>bundle</packaging>
     <name>Apache Karaf :: Shell :: Log Commands</name>
     <description>This bundle provides Karaf shell commands to manipulate Log service.</description>
@@ -41,6 +43,31 @@
         <dependency>
             <groupId>org.apache.karaf.shell</groupId>
             <artifactId>org.apache.karaf.shell.console</artifactId>
+            <version>2.3.3</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.karaf.jaas</groupId>
+            <artifactId>org.apache.karaf.jaas.config</artifactId>
+            <version>2.3.3</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.karaf.jaas</groupId>
+            <artifactId>org.apache.karaf.jaas.boot</artifactId>
+            <version>2.3.3</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.karaf.jaas</groupId>
+            <artifactId>org.apache.karaf.jaas.modules</artifactId>
+            <version>2.3.3</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.karaf</groupId>
+            <artifactId>org.apache.karaf.util</artifactId>
+            <version>2.3.3</version>
         </dependency>
 
         <dependency>
@@ -71,6 +98,21 @@
         </dependency>
 
     </dependencies>
+    
+    <!-- 
+    Added distributionManagement to support deployment to repository different than that
+    specified in karaf/pom.xml (namely, Codice Nexus repo)
+    -->
+    <distributionManagement>
+      <snapshotRepository>
+          <id>snapshots</id>
+          <url>${snapshots.repository.url}</url>
+      </snapshotRepository>
+      <repository>
+          <id>releases</id>
+          <url>${releases.repository.url}</url>
+      </repository>
+    </distributionManagement>
 
     <build>
         <resources>
