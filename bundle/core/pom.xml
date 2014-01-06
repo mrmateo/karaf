@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <!--
 
@@ -19,102 +20,134 @@
         limitations under the License.
     -->
 
-    <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.apache.karaf.bundle</groupId>
-        <artifactId>bundle</artifactId>
-        <version>3.0.0</version>
-        <relativePath>../pom.xml</relativePath>
-    </parent>
+  <parent>
+    <groupId>org.apache.karaf.bundle</groupId>
+    <artifactId>bundle</artifactId>
+    <version>3.0.0</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
 
-    <artifactId>org.apache.karaf.bundle.core</artifactId>
-    <packaging>bundle</packaging>
-    <name>Apache Karaf :: Bundle :: Core</name>
-    <description>Bundle Services and API</description>
+  <groupId>org.codice</groupId>
+  <artifactId>org.apache.karaf.bundle.core</artifactId>
+  <version>3.0.0.1</version>
+  <packaging>bundle</packaging>
+  <name>Apache Karaf :: Bundle :: Core</name>
+  <description>Bundle Services and API</description>
 
-    <properties>
-        <appendedResourcesDirectory>${basedir}/../../etc/appended-resources</appendedResourcesDirectory>
-    </properties>
+  <properties>
+    <appendedResourcesDirectory>${basedir}/../../etc/appended-resources</appendedResourcesDirectory>
+  </properties>
 
-    <dependencies>
+  <dependencies>
 
-        <dependency>
-            <groupId>org.apache.aries.blueprint</groupId>
-            <artifactId>org.apache.aries.blueprint.api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-		
-		<dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.core</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.compendium</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.ops4j.pax.url</groupId>
-            <artifactId>pax-url-aether</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
+    <dependency>
+      <groupId>org.apache.aries.blueprint</groupId>
+      <artifactId>org.apache.aries.blueprint.api</artifactId>
+      <scope>provided</scope>
+    </dependency>
 
-        <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.utils</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-jdk14</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.core</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.compendium</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.ops4j.pax.url</groupId>
+      <artifactId>pax-url-aether</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
 
-    <build>
-        <resources>
-            <resource>
-                <directory>${project.basedir}/src/main/resources</directory>
-                <includes>
-                    <include>**/*</include>
-                </includes>
-            </resource>
-            <resource>
-                <directory>${project.basedir}/src/main/resources</directory>
-                <filtering>true</filtering>
-                <includes>
-                    <include>**/*.info</include>
-                </includes>
-            </resource>
-        </resources>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <configuration>
-                    <instructions>
-                        <Export-Package>org.apache.karaf.bundle.core</Export-Package>
-                        <Import-Package>
-                            org.apache.felix.service.command;status=provisional,
-                            *
-                        </Import-Package>
-                        <Private-Package>
-                            org.apache.karaf.bundle.core.internal,
-                            org.apache.felix.utils.version,
-                            org.apache.felix.utils.manifest
-                        </Private-Package>
-                    </instructions>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <dependency>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>org.apache.felix.utils</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-jdk14</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <resources>
+      <resource>
+        <directory>${project.basedir}/src/main/resources</directory>
+        <includes>
+          <include>**/*</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>${project.basedir}/src/main/resources</directory>
+        <filtering>true</filtering>
+        <includes>
+          <include>**/*.info</include>
+        </includes>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <configuration>
+          <instructions>
+            <Embed-Dependency>pax-url-aether</Embed-Dependency>
+            <Export-Package>org.apache.karaf.bundle.core</Export-Package>
+            <!-- <Ignore-Package>junit.framework, org.testng.annotations, org.apache.log, org.junit</Ignore-Package> -->
+            <Import-Package>
+              javax.annotation,
+              javax.annotation.processing,
+              javax.crypto,
+              javax.crypto.spec,
+              javax.lang.model,
+              javax.lang.model.element,
+              javax.lang.model.util,
+              javax.management,
+              javax.management.openmbean,
+              javax.naming,
+              javax.net,
+              javax.net.ssl,
+              javax.tools,
+              javax.xml.parsers,
+              org.apache.avalon.framework.logger,
+              org.apache.log4j,
+              org.objectweb.asm,
+              org.objectweb.asm.commons,
+              org.osgi.framework;version="[1.7,2)",
+              org.osgi.framework.startlevel;version="[1.0,2)",
+              org.osgi.framework.wiring;version="[1.1,2)",
+              org.osgi.service.blueprint;version="[1.0.0,2.0.0)",
+              org.osgi.service.blueprint.container;version="[1.0,2)",
+              org.osgi.service.cm;version="[1.5,2)",
+              org.osgi.service.url;version="[1.0,2)",
+              org.osgi.util.tracker;version="[1.5,2)",
+              org.slf4j;version="[1.7,2)",
+              org.w3c.dom,
+              org.xml.sax,
+              org.apache.felix.service.command;status=provisional
+            </Import-Package>
+            <Private-Package>
+              org.apache.karaf.bundle.core.internal,
+              org.apache.felix.utils.version,
+              org.apache.felix.utils.manifest
+            </Private-Package>
+          </instructions>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>
